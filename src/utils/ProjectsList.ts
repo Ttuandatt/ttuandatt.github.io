@@ -1,24 +1,53 @@
 import {
-    HtmlIcon, CssIcon, JsIcon, ReactIcon, NodeIcon, TsIcon, NextIcon, MysqlIcon, MongoIcon, GdriveIcon, SocketIoIcon, RestApiIcon, PhpIcon, ViteIcon, NextAuthIcon, ReduxIcon, TailwindIcon, ZustandIcon, AstroIcon, NanostoresIcon, D3JsIcon, ReactQueryIcon, EdgeStoreIcon
+    JavaIcon,
+    SpringIcon,
+    KafkaIcon,
+    RedisIcon,
+    MysqlIcon,
+    PostgresIcon,
+    AwsIcon,
+    DockerIcon,
+    GithubActionsIcon,
+    GitIcon,
+    PythonIcon,
+    TsIcon,
+    ReactIcon,
+    NextIcon,
+    NestJsIcon,
+    RestApiIcon,
 } from "../assets/Icons"
 
 import {
-    NextmartLogo, ArmsLogo, ArmsPhpLogo, ClimateLogo, CovidtraxLogo, DaysbeyondLogo, FilmstackLogo, PikturesLogo, SrinivasLogo, XReconLogo, YoatubeLogo, VortexaLogo
+    TodolistLogo,
+    AwsWorkshopLogo,
+    WarehouseLogo,
+    BlogTranslationLogo,
+    IeltsLogo,
 } from "../assets/Logos"
 
 import {
-    NextmartShots, Armsv1Shots, Armsv2Shots, ClimateShots, CovidTraxShots, DaysbeyondShots, FilmstackShots, PikturesShots, SrinivasShots, XreconShots, YoatubeShots, VortexaShots, Armsv3Shots
+    TodolistShot,
+    AwsWorkshopShot,
+    WarehouseShot,
+    BlogTranslationShot,
+    IeltsShot,
 } from "../assets/Shots"
 
 import {
-    ARMSv1Mockup, ARMSv2Mockup, ARMSv3Mockup, ClimateMockup, DaysbeyondMockup, SrinivasMockup, VortexaMockup, XreconMockup, YoatubeMockup
+    TodolistMockup,
+    AwsWorkshopMockup,
+    WarehouseMockup,
+    BlogTranslationMockup,
+    IeltsMockup,
 } from "../assets/Mockup"
+
+import type { Localized } from "../i18n"
 
 
 type ProjectsListType = {
     Name: string,
-    ShortDesc: string,
-    Desc: string,
+    ShortDesc: Localized,
+    Desc: Localized,
     Logo: ImageMetadata,
     Shot: ImageMetadata,
     Mockup: ImageMetadata,
@@ -32,12 +61,12 @@ type ProjectsListType = {
     },
     Tech: {
         title: string,
-        description: string,
+        description: Localized,
         icon: ImageMetadata
     }[],
     features: {
-        title: string,
-        description: string
+        title: Localized,
+        description: Localized
     }[],
     hideProject: boolean,
     LogoSize: number,
@@ -47,568 +76,517 @@ type ProjectsListType = {
     }[]
 }[]
 
-// -- PROJECTS TEMPLATE --
-// {
-//     Name: "TITLE",
-//     ShortDesc: "SHORT_DESCRIPTION",
-//     Desc: "DESCRIPTION",
-//     Logo: LOGO_URL,
-//     Shot: SCREENSHOT_URL,
-//     Mockup: MOCKUP_URL,
-//     Theme: "PROJECT_THEME_COLOR_HEX",
-//     Status: "completed OR development",
-//     Link: "PROJECT_URL",
-//     Source: "GITHUB_URL",
-//     Demo?: { 
-//         email: "DEMO_EMAIL", 
-//         password: "DEMO_PASSWORD" 
-//     },
-//     Tech: [TECH_ICONS_URL],
-//     features: [{
-//         title: "FEATURE_TITLE",
-//         description: "FEATURE_DESCRIPTION"
-//     }],
-//     hideProject: false,
-//     LogoSize: 50,
-//     versions: [{ 
-//         title: "PREV_PROJECT_TITLE", 
-//         version: "VERSION_NO" 
-//     }]
-// },
-
 const TechInfo = {
-    HTML: {
-        title: "HTML",
-        description: "HyperText Markup Language for creating the structure of web pages.",
-        icon: HtmlIcon
+    Java: {
+        title: "Java",
+        description: {
+            vi: "Ngôn ngữ đa dụng, kiểu tĩnh mạnh — dùng xây dựng core backend services.",
+            en: "General-purpose, strongly-typed language used to build the core backend services.",
+        },
+        icon: JavaIcon
     },
-    CSS: {
-        title: "CSS",
-        description: "Cascading Style Sheets for styling the presentation of HTML documents.",
-        icon: CssIcon
+    Spring: {
+        title: "Spring Boot",
+        description: {
+            vi: "Framework Java để xây microservices production-grade với auto-configuration và embedded server.",
+            en: "Java framework for building production-grade microservices with auto-configuration and embedded servers.",
+        },
+        icon: SpringIcon
     },
-    JavaScript: {
-        title: "JavaScript",
-        description: "High-level scripting language for adding interactivity to web pages.",
-        icon: JsIcon
+    SpringSecurity: {
+        title: "Spring Security",
+        description: {
+            vi: "Framework xác thực & phân quyền với JWT, OAuth2 và bảo mật cấp method.",
+            en: "Authentication and authorization framework with JWT, OAuth2, and method-level security.",
+        },
+        icon: SpringIcon
     },
-    React: {
-        title: "React",
-        description: "JavaScript library for building user interfaces with reusable components.",
-        icon: ReactIcon
+    Hibernate: {
+        title: "Hibernate / JPA",
+        description: {
+            vi: "ORM map object Java sang database quan hệ, dùng JPA Specifications cho query động.",
+            en: "ORM for mapping Java objects to relational databases with JPA Specifications for dynamic queries.",
+        },
+        icon: SpringIcon
     },
-    Node: {
-        title: "Node.js",
-        description: "JavaScript runtime for server-side applications, enabling scalable and event-driven architecture.",
-        icon: NodeIcon
+    Kafka: {
+        title: "Apache Kafka",
+        description: {
+            vi: "Nền tảng event streaming phân tán cho messaging bất đồng bộ giữa services và replay event.",
+            en: "Distributed event streaming platform for async inter-service messaging and event replay.",
+        },
+        icon: KafkaIcon
     },
-    TypeScript: {
-        title: "TypeScript",
-        description: "A superset of JavaScript adding static typing for building large-scale applications with enhanced maintainability and tooling support.",
-        icon: TsIcon
-    },
-    Next: {
-        title: "Next.js",
-        description: "A React framework for server-side rendering, static site generation, and routing, offering improved performance and SEO optimization.",
-        icon: NextIcon
+    Redis: {
+        title: "Redis",
+        description: {
+            vi: "In-memory data store dùng cho cache, Pub/Sub, rate limiting và blacklist token.",
+            en: "In-memory data store used for caching, Pub/Sub, rate limiting, and token blacklisting.",
+        },
+        icon: RedisIcon
     },
     MySQL: {
         title: "MySQL",
-        description: "Open-source relational database management system for storing and managing structured data.",
+        description: {
+            vi: "Cơ sở dữ liệu quan hệ mã nguồn mở, lưu trữ dữ liệu giao dịch.",
+            en: "Open-source relational database for transactional data storage.",
+        },
         icon: MysqlIcon
     },
-    MongoDB: {
-        title: "MongoDB",
-        description: "NoSQL database offering flexibility and scalability for storing and managing data efficiently.",
-        icon: MongoIcon
+    Postgres: {
+        title: "PostgreSQL",
+        description: {
+            vi: "RDBMS nâng cao mã nguồn mở, hỗ trợ JSONB cho schema linh hoạt.",
+            en: "Advanced open-source RDBMS with JSONB support for flexible schema.",
+        },
+        icon: PostgresIcon
     },
-    GDrive: {
-        title: "Google Drive API",
-        description: "RESTful API for integrating Google Drive functionalities such as file storage and synchronization into applications.",
-        icon: GdriveIcon
+    AWS: {
+        title: "AWS Cloud",
+        description: {
+            vi: "Amazon Web Services — ECS Fargate, RDS, ElastiCache, S3, ALB, Route 53, CloudFront, v.v.",
+            en: "Amazon Web Services — ECS Fargate, RDS, ElastiCache, S3, ALB, Route 53, CloudFront, and more.",
+        },
+        icon: AwsIcon
     },
-    SocketIO: {
-        title: "Socket.IO",
-        description: "Real-time bidirectional communication library for building interactive web applications.",
-        icon: SocketIoIcon
+    Docker: {
+        title: "Docker",
+        description: {
+            vi: "Nền tảng container hóa cho development local và triển khai cloud nhất quán.",
+            en: "Containerization platform for consistent local development and cloud deployment.",
+        },
+        icon: DockerIcon
     },
-    RESTAPI: {
+    GithubActions: {
+        title: "GitHub Actions",
+        description: {
+            vi: "CI/CD tự động — build, push ECR, deploy ECS mỗi khi merge vào main.",
+            en: "CI/CD automation — build, push to ECR, and deploy to ECS on every merge to main.",
+        },
+        icon: GithubActionsIcon
+    },
+    Git: {
+        title: "Git",
+        description: {
+            vi: "Hệ thống quản lý mã nguồn phân tán.",
+            en: "Distributed version control for source code management.",
+        },
+        icon: GitIcon
+    },
+    Python: {
+        title: "Python",
+        description: {
+            vi: "Dùng để serve model ML và viết các script phụ trợ.",
+            en: "Used for ML model serving and auxiliary scripting.",
+        },
+        icon: PythonIcon
+    },
+    TypeScript: {
+        title: "TypeScript",
+        description: {
+            vi: "Superset có kiểu của JavaScript, dùng cho code frontend và backend an toàn kiểu.",
+            en: "Typed superset of JavaScript used for type-safe frontend and backend code.",
+        },
+        icon: TsIcon
+    },
+    React: {
+        title: "React",
+        description: {
+            vi: "Thư viện UI component-based, là nền tảng của phần frontend.",
+            en: "Component-based UI library powering the frontend.",
+        },
+        icon: ReactIcon
+    },
+    Next: {
+        title: "Next.js",
+        description: {
+            vi: "Framework React với App Router, Server Components và SSR/SSG.",
+            en: "React framework with App Router, Server Components, and SSR/SSG.",
+        },
+        icon: NextIcon
+    },
+    NestJS: {
+        title: "NestJS",
+        description: {
+            vi: "Framework Node.js hiện đại với kiến trúc module hóa, DI và decorator.",
+            en: "Progressive Node.js framework with modular architecture, DI, and decorators.",
+        },
+        icon: NestJsIcon
+    },
+    REST: {
         title: "REST API",
-        description: "Architectural style for designing networked applications with standardized HTTP operations.",
+        description: {
+            vi: "Kiểu kiến trúc thiết kế API stateless, hướng tài nguyên.",
+            en: "Architectural style for designing stateless, resource-oriented APIs.",
+        },
         icon: RestApiIcon
     },
-    PHP: {
-        title: "PHP",
-        description: "Server-side scripting language for building dynamic web applications.",
-        icon: PhpIcon
-    },
-    Vite: {
-        title: "Vite",
-        description: "Modern build tooling for web development with rapid startup and hot module replacement.",
-        icon: ViteIcon
-    },
-    NextAuth: {
-        title: "NextAuth.js",
-        description: "Authentication library designed specifically for Next.js applications, providing robust authentication features and seamless integration.",
-        icon: NextAuthIcon
-    },
-    Redux: {
-        title: "Redux",
-        description: "Predictable state management library for JavaScript applications, enabling developers to write consistent, scalable code with ease.",
-        icon: ReduxIcon
-    },
-    TailwindCSS: {
-        title: "Tailwind CSS",
-        description: "A utility-first CSS framework providing pre-designed, atomic-level utility classes for rapid UI development with minimal CSS code.",
-        icon: TailwindIcon
-    },
-    Zustand: {
-        title: "Zustand",
-        description: "Tiny, fast, and scalable state management for React applications, providing a simple and intuitive API.",
-        icon: ZustandIcon
-    },
-    Astro: {
-        title: "Astro",
-        description: "Frontend framework for streamlined development, integrating seamlessly with popular tools to create fast and modern websites with minimal configuration overhead.",
-        icon: AstroIcon
-    },
-    NanoStores: {
-        title: "NanoStores",
-        description: "Lightweight state management library for JavaScript applications, designed for simplicity and performance to simplify state management and improve application responsiveness.",
-        icon: NanostoresIcon
-    },
-    D3: {
-        title: "D3.js",
-        description: "Versatile JavaScript library for data visualization, enabling developers to create dynamic, interactive graphics and charts by binding data to DOM elements.",
-        icon: D3JsIcon
-    },
-    ReactQuery: {
-        title: "React Query",
-        description: "React library for managing, caching, and synchronizing server state in web applications, providing a powerful and intuitive API for fetching and updating data.",
-        icon: ReactQueryIcon
-    },
-    EdgeStore: {
-        title: "EdgeStore",
-        description: "EdgeStore is an open-source file storage service, designed for scalability and performance, with efficient updates and minimal API.",
-        icon: EdgeStoreIcon
-    }
-};
-
-// Common Features List
-const FeatureList = {
-    Responsive: {
-        title: "Responsive Design",
-        description: "Enjoy a seamless experience across devices with a responsive design that adapts to various screen sizes and orientations."
-    },
-    SEO: {
-        title: "SEO Optimization",
-        description: "Crafted with SEO best practices, ensuring optimal visibility on search engines. From keyword-rich content to streamlined meta tags and efficient site architecture."
-    }
 }
 
 export const ProjectsList: ProjectsListType = [
     {
-        Name: "ARMS v3",
-        ShortDesc: "An educational platform designed to empower students with easy access to study materials. Students can browse & download PDFs files.",
-        Desc: "ARMS (Academic Resource Management System) is an all-inclusive educational platform designed to empower students with easy access to study materials for their respective subjects. By logging in anonymously, students can conveniently browse and download PDF documents uploaded by authorized faculties. With a centralized approach, ARMS ensures that students can effortlessly find and obtain the necessary resources they need for their academic pursuits. It's a user-friendly solution that streamlines the process of resource management, providing a seamless experience for both students and faculties alike.",
-        Logo: ArmsLogo,
-        Shot: Armsv3Shots,
-        Mockup: ARMSv3Mockup,
-        Theme: "#FFF",
+        Name: "SaaS Task Management",
+        ShortDesc: {
+            vi: "SaaS giống Todoist xây bằng Spring Boot microservices, Kafka, Redis và AWS ECS Fargate — JWT/OAuth2, thông báo realtime, gán nhãn task bằng AI.",
+            en: "Todoist-like SaaS built with Spring Boot microservices, Kafka, Redis, and AWS ECS Fargate — featuring JWT/OAuth2 auth, real-time notifications, and AI task labeling.",
+        },
+        Desc: {
+            vi: "Nền tảng quản lý công việc cấp production, xây trong 6 tháng thực tập tại AWS Vietnam. Hệ thống tách business logic thành 6 microservices độc lập giao tiếp qua Apache Kafka và triển khai trên AWS ECS Fargate. Tôi đảm nhiệm toàn bộ Auth Service — tạo/xác thực JWT, đăng nhập OAuth2 Google, xác thực OTP qua email, quản lý session bằng Redis và bảo mật mật khẩu bằng BCrypt. Ngoài ra tích hợp service với Spring Cloud Gateway, đóng gói Docker và viết pipeline GitHub Actions giảm một nửa thời gian release thủ công.",
+            en: "A production-grade task management platform built during a 6-month internship at AWS Vietnam. The system decomposes business logic into 6 independent microservices communicating via Apache Kafka and deployed on AWS ECS Fargate. I designed and owned the entire Auth Service — JWT token generation/validation, OAuth2 Google login, OTP email verification, Redis-backed session handling, and BCrypt password security. I also integrated the service with Spring Cloud Gateway, containerized everything with Docker, and wrote GitHub Actions pipelines that cut manual release time in half.",
+        },
+        Logo: TodolistLogo,
+        Shot: TodolistShot,
+        Mockup: TodolistMockup,
+        Theme: "#FF9900",
         Status: "completed",
-        Link: "https://arms-v3.vercel.app/",
-        Source: "https://github.com/ChiragChrg/arms-v3",
-        Tech: [TechInfo.Next, TechInfo.TypeScript, TechInfo.TailwindCSS, TechInfo.ReactQuery, TechInfo.Zustand, TechInfo.MongoDB, TechInfo.NextAuth, TechInfo.EdgeStore],
+        Link: "https://youtu.be/gOVHkb54aeM",
+        Source: "https://github.com/gnuh24/aws-todo-list-project",
+        Tech: [TechInfo.Java, TechInfo.Spring, TechInfo.SpringSecurity, TechInfo.Hibernate, TechInfo.Kafka, TechInfo.Redis, TechInfo.MySQL, TechInfo.AWS, TechInfo.Docker, TechInfo.GithubActions, TechInfo.Python, TechInfo.React],
         features: [
             {
-                title: "Anonymous Login",
-                description: "Students can conveniently  log in anonymously to browse and access study materials."
+                title: { vi: "Xác thực JWT + OAuth2", en: "JWT + OAuth2 Authentication" },
+                description: {
+                    vi: "Hệ thống JWT 2 token (access + refresh) ký bằng HMAC-SHA256, đăng nhập OAuth2 Google và blacklist token bằng Redis cho logout an toàn.",
+                    en: "Dual-token JWT system (access + refresh) with HMAC-SHA256 signing, Google OAuth2 social login, and Redis-backed token blacklisting for secure logout.",
+                },
             },
             {
-                title: "Secure Access",
-                description: "Utilizes NextAuth for secure authentication of authorized users using Google and Github Auth providers."
+                title: { vi: "Xác thực OTP qua Email", en: "OTP Email Verification" },
+                description: {
+                    vi: "Mã OTP có TTL 3 phút lưu trong Redis để kích hoạt tài khoản, reset mật khẩu và đổi email — publish qua Kafka tới Notification Service.",
+                    en: "Time-limited OTP codes (3 min TTL) stored in Redis for account activation, password reset, and email updates — published via Kafka to the Notification Service.",
+                },
             },
             {
-                title: "Streamlined Resource Management",
-                description: "Efficient upload, update, and management of study materials using EdgeStore cloud storage."
+                title: { vi: "API Gateway với JWT Filter", en: "API Gateway with JWT Filter" },
+                description: {
+                    vi: "Spring Cloud Gateway với global filter validate token và inject header user context (X-User-Id, X-User-Email, X-User-Role) trước khi định tuyến downstream.",
+                    en: "Spring Cloud Gateway with a global filter that validates tokens and injects user context headers (X-User-Id, X-User-Email, X-User-Role) before routing downstream.",
+                },
             },
             {
-                title: "Document Download",
-                description: "Easily download PDF documents for offline access."
+                title: { vi: "Phân quyền theo Role", en: "Role-Based Access Control" },
+                description: {
+                    vi: "4 cấp quyền mỗi project — Owner, Admin, Member, Viewer — thực thi ở tầng service bằng Spring Security.",
+                    en: "4 permission levels per project — Owner, Admin, Member, Viewer — enforced at the service layer with Spring Security.",
+                },
             },
             {
-                title: "Efficient Data Management",
-                description: "Automatically caches query results, reduces redundant network requests, and improves overall application performance using Tanstack Query."
+                title: { vi: "Kiến trúc Event-Driven với Kafka", en: "Kafka Event-Driven Architecture" },
+                description: {
+                    vi: "Event bất đồng bộ giữa Auth, Taskflow và Notification — tách rời, replay được và dễ mở rộng.",
+                    en: "Async events between Auth, Taskflow, and Notification services — decoupled, replayable, and scalable.",
+                },
             },
-            FeatureList.Responsive,
-            FeatureList.SEO
+            {
+                title: { vi: "Gán nhãn Task bằng AI", en: "AI Task Labeling" },
+                description: {
+                    vi: "Service ML Python Flask phân loại nhãn task tự động qua model đã train, consume qua REST bởi Taskflow Service.",
+                    en: "Python Flask ML service classifies task labels automatically using a trained model, consumed via REST by the Taskflow Service.",
+                },
+            },
+            {
+                title: { vi: "Triển khai AWS ECS Fargate", en: "AWS ECS Fargate Deployment" },
+                description: {
+                    vi: "Triển khai container serverless với auto-scaling, ALB, RDS Aurora, ElastiCache Redis và S3 — tối ưu chi phí ~$30/tháng.",
+                    en: "Serverless container deployment with auto-scaling, ALB, RDS Aurora, ElastiCache Redis, and S3 — cost-optimized at ~$30/month.",
+                },
+            },
+            {
+                title: { vi: "CI/CD với GitHub Actions", en: "CI/CD with GitHub Actions" },
+                description: {
+                    vi: "Pipeline tự động build → push ECR → deploy ECS, giảm 50% thời gian release thủ công.",
+                    en: "Automated build → push to ECR → deploy to ECS pipeline, reducing manual release time by 50%.",
+                },
+            },
         ],
         hideProject: false,
-        LogoSize: 50,
-        versions: [
-            { title: "ARMS v3", version: "3" },
-            { title: "ARMS v2", version: "2" },
-            { title: "ARMS v1", version: "1" },
-        ]
+        LogoSize: 60,
+        versions: []
     },
     {
-        Name: "Vortexa",
-        ShortDesc: "Stay informed about current conditions, forecasts, and astronomical data, and gain valuable insights into current weather patterns and trends.",
-        Desc: "Explore comprehensive weather insights and forecasts with Vortexa. Stay informed about current conditions, forecasts, and astronomical data, and gain valuable insights into weather patterns and trends.",
-        Logo: VortexaLogo,
-        Shot: VortexaShots,
-        Mockup: VortexaMockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "https://vortexa.netlify.app/",
-        Source: "https://github.com/ChiragChrg/vortexa",
-        Tech: [TechInfo.Astro, TechInfo.React, TechInfo.TypeScript, TechInfo.TailwindCSS, TechInfo.D3, TechInfo.NanoStores, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-            {
-                title: "Dynamic Background Images",
-                description: "Experience the weather firsthand with dynamic background images that change based on the current weather conditions, creating an immersive atmosphere."
-            },
-            {
-                title: "City Search",
-                description: "Easily search for weather information in any city around the world. Get accurate forecasts and conditions for your desired location."
-            },
-            {
-                title: "Wind Direction Compass",
-                description: "Visualize wind direction with an interactive compass display. Easily identify the direction from which the wind is blowing for better understanding of weather patterns."
-            },
-            {
-                title: "Sunrise-Sunset Graph",
-                description: "Track the daily progression of sunrise and sunset times with an intuitive graph. Plan your activities accordingly based on daylight hours."
-            },
-            {
-                title: "Air Quality Index (AQI)",
-                description: "Stay informed about air quality levels with real-time Air Quality Index (AQI) data. Monitor pollution levels and take necessary precautions for your health."
-            },
-            {
-                title: "24-Hour Weather Forecast",
-                description: "Plan your day with a detailed 24-hour weather forecast displayed graphically. Visualize temperature changes, precipitation, and other weather parameters."
-            },
-            {
-                title: "2-Day Forecast",
-                description: "Get a glimpse of the weather ahead with a concise 2-day forecast. Stay prepared for upcoming changes in weather conditions."
-            }
-        ],
-        hideProject: false,
-        LogoSize: 50,
-        versions: [
-            { title: "Vortexa", version: "2" },
-            { title: "CliMate", version: "1" },
-        ]
-    },
-    {
-        Name: "Next Mart",
-        ShortDesc: "Discover an unparalleled shopping experience with Next Mart website. Unleash the power of online shopping with a diverse range of products.",
-        Desc: "Discover an unparalleled shopping experience with Next Mart, an exceptional web app developed by ChiragChrg. Unleash the power of online shopping with a vast array of products at your fingertips",
-        Logo: NextmartLogo,
-        Shot: NextmartShots,
-        Mockup: ARMSv3Mockup,
-        Theme: "#090b0b",
+        Name: "IELTS Helper",
+        ShortDesc: {
+            vi: "Nền tảng luyện IELTS full-stack với chấm essay bằng AI (rubric 4 tiêu chí), Reading tự chấm, quản lý lớp học và dashboard theo vai trò.",
+            en: "Full-stack IELTS prep platform with AI-powered essay scoring (4-criteria rubric), auto-graded Reading, classroom management, and role-based dashboards.",
+        },
+        Desc: {
+            vi: "IELTS Helper giải quyết nỗi đau thực tế khi luyện IELTS: feedback Writing chậm (1–3 ngày → dưới 5 phút), chấm điểm thiếu nhất quán và nội dung phân mảnh. Reading tự chấm cho lời giải tức thì; module Writing dùng queue BullMQ async để offload việc chấm sang OpenAI GPT-4o (Gemini fallback) và stream kết quả về qua SSE. Hệ thống hỗ trợ 3 vai trò Learner, Instructor, Admin với dashboard riêng, quản lý lớp học qua invite code và CMS nội dung có theo dõi phiên bản.",
+            en: "IELTS Helper solves real pain points in IELTS prep: slow writing feedback (1–3 days → under 5 minutes), inconsistent scoring, and fragmented content. Auto-graded Reading delivers instant explanations, while the Writing module uses an async BullMQ queue to offload scoring to OpenAI GPT-4o (with Gemini fallback) and stream results back via SSE. The system supports Learners, Instructors, and Admins with distinct dashboards, classroom management with invite codes, and a full content CMS with version tracking.",
+        },
+        Logo: IeltsLogo,
+        Shot: IeltsShot,
+        Mockup: IeltsMockup,
+        Theme: "#7C3AED",
         Status: "development",
-        Link: "https://nextmart.vercel.app/",
-        Source: "https://github.com/ChiragChrg/nextmart",
-        Tech: [TechInfo.Next, TechInfo.TypeScript, TechInfo.MongoDB, TechInfo.NextAuth, TechInfo.Redux, TechInfo.TailwindCSS],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 40,
-        versions: []
-    },
-    {
-        Name: "ARMS v2",
-        ShortDesc: "A platform which simplifies resource management for students. Faculties can upload PDF files. Students download study materials anonymously.",
-        Desc: "ARMS (Academic Resource Management System) is an all-inclusive educational platform designed to empower students with easy access to study materials for their respective subjects. By logging in anonymously, students can conveniently browse and download PDF documents uploaded by authorized faculties. With a centralized approach, ARMS ensures that students can effortlessly find and obtain the necessary resources they need for their academic pursuits. It's a user-friendly solution that streamlines the process of resource management, providing a seamless experience for both students and faculties alike.",
-        Logo: ArmsLogo,
-        Shot: Armsv2Shots,
-        Mockup: ARMSv2Mockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "https://armss.netlify.app/",
-        Source: "https://github.com/ChiragChrg/ARMS",
-        Tech: [TechInfo.Vite, TechInfo.React, TechInfo.Node, TechInfo.MongoDB, TechInfo.GDrive],
+        Link: "https://github.com/Ttuandatt",
+        Source: "https://github.com/Ttuandatt",
+        Tech: [TechInfo.Next, TechInfo.NestJS, TechInfo.TypeScript, TechInfo.Postgres, TechInfo.Redis, TechInfo.Docker, TechInfo.REST],
         features: [
             {
-                title: "Anonymous Login",
-                description: "Students can conveniently  log in anonymously to browse and access study materials."
+                title: { vi: "Chấm Essay bằng AI", en: "AI-Powered Essay Scoring" },
+                description: {
+                    vi: "Chấm theo 4 tiêu chí IELTS (Task Response, Coherence, Lexical Resource, Grammar) qua OpenAI GPT-4o với Google Gemini làm fallback. Dưới 5 phút/lần.",
+                    en: "IELTS 4-criteria scoring (Task Response, Coherence, Lexical Resource, Grammar) via OpenAI GPT-4o with Google Gemini as fallback. Under 5 min turnaround.",
+                },
             },
             {
-                title: "Streamlined Resource Management",
-                description: "Upload, update, and management of study materials using Google Drive cloud storage."
+                title: { vi: "Pipeline chấm bất đồng bộ", en: "Async Scoring Pipeline" },
+                description: {
+                    vi: "Queue BullMQ + Redis với priority, 3 lần retry, backoff tăng dần. API trả 202 ngay lập tức; client poll hoặc nghe qua SSE để nhận cập nhật realtime.",
+                    en: "BullMQ + Redis queue with priority, 3 retries, exponential backoff. API returns 202 immediately; client polls or listens via SSE for real-time updates.",
+                },
             },
             {
-                title: "Document Download",
-                description: "Easily download PDF documents for offline access."
-            },
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: [
-            { title: "ARMS v3", version: "3" },
-            { title: "ARMS v2", version: "2" },
-            { title: "ARMS v1", version: "1" },
-        ]
-    },
-    {
-        Name: "XRecon",
-        ShortDesc: "A real-time chat app, reminiscent of WhatsApp, allowing users to register, login, and connect with friends and family through instant messaging.",
-        Desc: "XRecon is a dynamic real-time chat app that offers a seamless communication experience, akin to popular platforms like WhatsApp. With XRecon, users can effortlessly register and log in to their accounts, enabling them to connect with friends and family through instant messaging. Whether it's sharing updates, engaging in conversations, or simply staying connected, XRecon provides a user-friendly interface for convenient and reliable communication.",
-        Logo: XReconLogo,
-        Shot: XreconShots,
-        Mockup: XreconMockup,
-        Theme: "#001220",
-        Status: "development",
-        Link: "https://xrecon.netlify.app/",
-        Source: "https://github.com/ChiragChrg/xrecon",
-        Demo: { email: "demouser123@gmail.com", password: "DemoUser123" },
-        Tech: [TechInfo.Vite, TechInfo.React, TechInfo.Node, TechInfo.MongoDB, TechInfo.SocketIO],
-        features: [
-            {
-                title: "Real-Time Chat",
-                description: "Engage in real-time conversations with other users using Socket.io technology providing seamless communication."
+                title: { vi: "Reading tự chấm", en: "Auto-Graded Reading" },
+                description: {
+                    vi: "6 dạng câu hỏi IELTS (MCQ, Short Answer, Matching Headings, T/F/NG, Diagram Labeling, Sentence Completion) kèm giải thích chi tiết từng câu.",
+                    en: "6 IELTS question types (MCQ, Short Answer, Matching Headings, T/F/NG, Diagram Labeling, Sentence Completion) with instant per-question explanations.",
+                },
             },
             {
-                title: "Dynamic User Avatars",
-                description: "Personalize your profile with dynamic user avatars generated using the Multiavatar API. Each user gets a unique and colorful avatar based on their username."
+                title: { vi: "Quản lý lớp học", en: "Classroom Management" },
+                description: {
+                    vi: "Lớp ảo do Instructor dẫn với invite code 8 ký tự, cấu trúc Topic → Lesson và thông báo cho cả lớp.",
+                    en: "Instructor-led virtual classrooms with 8-char invite codes, hierarchical Topics → Lessons, and class-wide announcements.",
+                },
             },
             {
-                title: "Private Messaging",
-                description: "Communicate privately with other users through secure and encrypted messaging. Exchange messages without the worry of unauthorized access."
+                title: { vi: "Phân quyền theo Role", en: "Role-Based Access Control" },
+                description: {
+                    vi: "3 vai trò Learner / Instructor / Admin enforce bằng NestJS guards và JWT claims. Silent refresh token qua Axios interceptor.",
+                    en: "Learner / Instructor / Admin roles enforced with NestJS guards and JWT claims. Silent token refresh via Axios interceptor.",
+                },
             },
             {
-                title: "Emojis and Reactions",
-                description: "Express yourself with a wide range of emojis and reactions. Add fun and personality to your messages with animated emojis and customizable reactions."
+                title: { vi: "Theo dõi phiên bản nội dung", en: "Content Versioning" },
+                description: {
+                    vi: "Mọi chỉnh sửa passage, question và prompt đều log editor, timestamp và diff — audit trail đầy đủ.",
+                    en: "Every passage, question, and prompt edit is logged with editor ID, timestamp, and diff — full audit trail for compliance.",
+                },
             },
-            FeatureList.Responsive,
-            FeatureList.SEO,
+            {
+                title: { vi: "i18n song ngữ", en: "Bilingual i18n" },
+                description: {
+                    vi: "Custom i18n provider với tiếng Việt + tiếng Anh, đổi ngôn ngữ realtime, dark/light theming.",
+                    en: "Custom i18n provider with Vietnamese and English translations, real-time language switching, dark/light theming.",
+                },
+            },
+            {
+                title: { vi: "Prisma schema 14 bảng", en: "14-Table Prisma Schema" },
+                description: {
+                    vi: "Schema PostgreSQL 15 bao quát users, content, submissions, classrooms, notifications và async import job.",
+                    en: "PostgreSQL 15 schema covering users, content, submissions, classrooms, notifications, and async import jobs.",
+                },
+            },
         ],
         hideProject: false,
-        LogoSize: 55,
+        LogoSize: 60,
         versions: []
     },
     {
-        Name: "YoaTube",
-        ShortDesc: "YoaTube is a YouTube-inspired video streaming app. Enjoy a vast collection of videos, personalized recommendations, and a seamless user interface.",
-        Desc: "YoaTube is a dynamic video streaming application, designed with the power of the YouTube API. This innovative platform provides users with an immersive and engaging video-watching experience similar to YouTube. Explore an extensive library of videos. With YoaTube, you can dive into a world of captivating videos, all within a seamless and user-friendly interface.",
-        Logo: YoatubeLogo,
-        Shot: YoatubeShots,
-        Mockup: YoatubeMockup,
-        Theme: "#0f0f0f",
+        Name: "AWS Workshop",
+        ShortDesc: {
+            vi: "Workshop triển khai AWS đầy đủ với 35+ bước hướng dẫn chi tiết về VPC, ECS Fargate, ALB, RDS, CloudFront, v.v. Song ngữ (EN/VI).",
+            en: "Comprehensive AWS deployment workshop with 35+ step-by-step guides covering VPC, ECS Fargate, ALB, RDS, CloudFront, and more. Bilingual (EN/VI).",
+        },
+        Desc: {
+            vi: "Workshop song ngữ Anh–Việt ghi lại toàn bộ quá trình triển khai nền tảng SaaS Task Management lên AWS. Là deliverable chính của kỳ thực tập, tài liệu này vừa là production doc vừa là resource học tập cho thực tập sinh sau. Nội dung gồm thiết kế network, security groups, ECS task definitions, Cloud Map service discovery, ALB path-based routing, Cross-Region Replication cho DR và quy trình tear-down tránh phát sinh chi phí.",
+            en: "A bilingual (English & Vietnamese) workshop documenting the full deployment of the SaaS Task Management platform on AWS. Created as a primary internship deliverable, it serves as both production documentation and a learning resource for future interns. Covers network design, security groups, ECS task definitions, Cloud Map service discovery, ALB path-based routing, Cross-Region Replication for disaster recovery, and tear-down procedures to avoid cost surprises.",
+        },
+        Logo: AwsWorkshopLogo,
+        Shot: AwsWorkshopShot,
+        Mockup: AwsWorkshopMockup,
+        Theme: "#FF9900",
         Status: "completed",
-        Link: "https://yoatube.netlify.app/",
-        Source: "https://github.com/ChiragChrg/yoatube",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.React, TechInfo.RESTAPI],
+        Link: "https://ttuandatt.github.io/AWS-Workshop/",
+        Source: "https://github.com/Ttuandatt/AWS-Workshop",
+        Tech: [TechInfo.AWS, TechInfo.Docker, TechInfo.Git],
         features: [
             {
-                title: "Video Streaming",
-                description: "Stream high-quality videos seamlessly. Enjoy smooth playback with adaptive streaming technology."
+                title: { vi: "35+ bước triển khai", en: "35+ Deployment Steps" },
+                description: {
+                    vi: "Hướng dẫn trọn bộ từ tạo VPC đến CloudFront distribution, mỗi bước kèm screenshot và giải thích.",
+                    en: "Full walkthrough from VPC creation to CloudFront distribution, each step with screenshots and explanations.",
+                },
             },
             {
-                title: "Search and Discovery",
-                description: "Discover new content with powerful search and recommendation algorithms. Find videos based on your interests and preferences."
+                title: { vi: "Thiết kế Network", en: "Network Setup" },
+                description: {
+                    vi: "VPC (10.0.0.0/16), public/private subnet qua 2 AZ, Internet Gateway, route tables và Security Groups cho ALB, ECS, RDS, Redis.",
+                    en: "VPC (10.0.0.0/16), public/private subnets across 2 AZs, Internet Gateway, route tables, and Security Groups for ALB, ECS, RDS, Redis.",
+                },
             },
-            FeatureList.Responsive,
-            FeatureList.SEO,
+            {
+                title: { vi: "Triển khai Backend", en: "Backend Deployment" },
+                description: {
+                    vi: "ECR repos, ECS Cluster với Fargate, Task Definition cho mỗi microservice, rolling update, ALB path-based routing, Cloud Map service discovery.",
+                    en: "ECR repos, ECS Cluster with Fargate, Task Definitions per microservice, rolling updates, ALB path-based routing, Cloud Map service discovery.",
+                },
+            },
+            {
+                title: { vi: "Tầng dữ liệu", en: "Data Layer" },
+                description: {
+                    vi: "Provision RDS MySQL, ElastiCache Redis cluster và Kafka trên ECS — kèm setup backup, replication và monitoring.",
+                    en: "RDS MySQL provisioning, ElastiCache Redis cluster, and Kafka on ECS — with backup, replication, and monitoring setup.",
+                },
+            },
+            {
+                title: { vi: "Triển khai Frontend", en: "Frontend Deployment" },
+                description: {
+                    vi: "S3 static hosting, CloudFront distribution với custom domain, ACM SSL và Cross-Region Replication (CRR) cho DR.",
+                    en: "S3 static hosting, CloudFront distribution with custom domain, ACM SSL, and Cross-Region Replication (CRR) for disaster recovery.",
+                },
+            },
+            {
+                title: { vi: "Hướng dẫn Clean Up", en: "Clean Up Guide" },
+                description: {
+                    vi: "Hướng dẫn tear-down từng bước để tránh phát sinh chi phí AWS sau workshop.",
+                    en: "Step-by-step tear-down instructions to avoid unexpected AWS charges after the workshop.",
+                },
+            },
+            {
+                title: { vi: "Tài liệu song ngữ", en: "Bilingual Documentation" },
+                description: {
+                    vi: "Có bản tiếng Anh và tiếng Việt, giúp kiến thức AWS tiếp cận được cộng đồng dev Việt Nam.",
+                    en: "Available in both English and Vietnamese, making AWS knowledge accessible to the Vietnamese developer community.",
+                },
+            },
         ],
         hideProject: false,
-        LogoSize: 55,
+        LogoSize: 60,
         versions: []
     },
     {
-        Name: "Srinivas Exam Manager",
-        ShortDesc: "A software where Students can easily register, while staff and faculty efficiently manage academic details. Staff can generate hall tickets and marks cards.",
-        Desc: "Srinivas Exam Manager is a comprehensive exam management software exclusively developed for Srinivas University. Students can easily register and access their academic details, while staff and faculty members can efficiently manage student records. With its advanced features, the software can generate examination hall tickets and marks cards, simplifying the administrative process.",
-        Logo: SrinivasLogo,
-        Shot: SrinivasShots,
-        Mockup: SrinivasMockup,
-        Theme: "#fff",
+        Name: "Warehouse Management",
+        ShortDesc: {
+            vi: "App desktop quản lý kho — tracking tồn kho, sản phẩm và nhập/xuất — làm Team Leader với Java SE theo kiến trúc 3-Tier nghiêm ngặt.",
+            en: "Desktop app for inventory tracking, product management, and stock movements — built as Team Leader with Java SE following strict 3-Tier Architecture.",
+        },
+        Desc: {
+            vi: "Ứng dụng desktop tôi dẫn dắt phát triển với vai trò Team Leader trong team 3 người. Hệ thống tuân theo kiến trúc 3-Tier (GUI → BUS → DAO) với DAO + DTO pattern để tách business logic khỏi data access. Tôi engineer Data Access Layer dùng raw SQL qua PreparedStatement để chống SQL Injection, xây module Authentication bảo mật, triển khai Inventory Management (CRUD sản phẩm, nhập/xuất kho), và thiết kế layout chính bằng Java Swing/JavaFX phù hợp với workflow của nhân viên kho. Thời gian: 03/2024 – 09/2024.",
+            en: "A desktop application I led development of as Team Leader of a 3-person team. The system follows 3-Tier Architecture (GUI → BUS → DAO) with DAO and DTO patterns to decouple business logic from data access. I engineered the Data Access Layer with raw SQL via PreparedStatement to prevent SQL Injection, built the secure Authentication module, implemented core Inventory Management (Product CRUD, Stock In/Out), and designed the main layout with Java Swing/JavaFX for an intuitive warehouse-staff experience. Timeline: Mar 2024 – Sep 2024.",
+        },
+        Logo: WarehouseLogo,
+        Shot: WarehouseShot,
+        Mockup: WarehouseMockup,
+        Theme: "#1E3A8A",
         Status: "completed",
-        Link: "https://srinivas-exam-manager.netlify.app/",
-        Source: "https://github.com/ChiragChrg/srinivas-exam-manager",
-        Demo: { email: "demouser123@gmail.com", password: "DemoUser123" },
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.React, TechInfo.Node, TechInfo.MySQL],
+        Link: "https://github.com/Ttuandatt/Warehouse_Management",
+        Source: "https://github.com/Ttuandatt/Warehouse_Management",
+        Tech: [TechInfo.Java, TechInfo.MySQL, TechInfo.Git],
         features: [
             {
-                title: "Dynamic Hall Ticket Generation",
-                description: "Generate personalized hall tickets dynamically for each student. Include relevant exam details and student information."
+                title: { vi: "Kiến trúc 3-Tier", en: "3-Tier Architecture" },
+                description: {
+                    vi: "Phân tầng GUI → BUS → DAO nghiêm ngặt, tách biệt concern và dễ bảo trì.",
+                    en: "Strict GUI → BUS → DAO layering ensures separation of concerns and maintainability.",
+                },
             },
             {
-                title: "File Upload & Download",
-                description: "Upload and download files securely. Share resources such as study materials, question papers, and answer keys with students and faculty."
+                title: { vi: "DAO + DTO Pattern", en: "DAO + DTO Patterns" },
+                description: {
+                    vi: "DAO tách logic lưu trữ; DTO vận chuyển dữ liệu giữa các tầng an toàn.",
+                    en: "Data Access Objects decouple persistence logic; DTOs carry data across layers safely.",
+                },
             },
             {
-                title: "Multi-Role Based User Management",
-                description: "Manage users with different roles such as Student, Faculty, Staff, Admin, Super-Admin. Assign permissions and access levels based on user roles."
+                title: { vi: "Chống SQL Injection", en: "SQL Injection Prevention" },
+                description: {
+                    vi: "Toàn bộ query database dùng PreparedStatement với parameterized input.",
+                    en: "All database queries use PreparedStatement with parameterized inputs to prevent injection attacks.",
+                },
             },
             {
-                title: "Exam Scheduling",
-                description: "Schedule exams efficiently with an intuitive scheduling system. Set exam dates, times and notify users about upcoming exams."
+                title: { vi: "Xác thực bảo mật", en: "Secure Authentication" },
+                description: {
+                    vi: "Module Login/Logout với validate credential và quản lý session.",
+                    en: "Login/Logout module with credential validation and session tracking.",
+                },
             },
             {
-                title: "Attendance Management",
-                description: "Monitor student attendance during exams. Keep track of attendance records and generate reports for analysis and compliance purposes."
+                title: { vi: "Quản lý kho", en: "Inventory Management" },
+                description: {
+                    vi: "CRUD sản phẩm đầy đủ, tracking nhập/xuất kho với validate và audit trail.",
+                    en: "Full Product CRUD, Stock-In and Stock-Out tracking, with validation and audit trails.",
+                },
             },
             {
-                title: "Notification System",
-                description: "Send automated notifications to students and faculty about exam-related events. Notify about exam schedules, hall ticket availability, and result announcements."
+                title: { vi: "UI Java Swing / JavaFX", en: "Java Swing / JavaFX UI" },
+                description: {
+                    vi: "UI desktop trực quan, thiết kế phù hợp workflow nhân viên kho.",
+                    en: "Intuitive desktop UI designed for warehouse staff workflows.",
+                },
             },
-            FeatureList.Responsive,
-            FeatureList.SEO,
+            {
+                title: { vi: "Lãnh đạo team", en: "Team Leadership" },
+                description: {
+                    vi: "Dẫn dắt team 3 người qua full lifecycle — kiến trúc, phân việc và code review.",
+                    en: "Led a 3-person team through the full development lifecycle — architecture, task allocation, and code review.",
+                },
+            },
         ],
         hideProject: false,
-        LogoSize: 55,
+        LogoSize: 60,
         versions: []
     },
     {
-        Name: "Piktures",
-        ShortDesc: "Explore a wide range of vibrant and colorful images. Users can effortlessly search, download, and instantly access stunning visuals in high quality.",
-        Desc: "Piktures is an image browsing app that offers a vast collection of vibrant and colorful images. With Piktures, users can effortlessly search for any image and download them in high quality. Discover stunning visuals, express your creativity, and enhance your projects with Piktures. Explore and download captivating images with ease.",
-        Logo: PikturesLogo,
-        Shot: PikturesShots,
-        Mockup: ARMSv3Mockup,
-        Theme: "#ddd",
+        Name: "AWS Blog Translation",
+        ShortDesc: {
+            vi: "Dịch 3 blog kỹ thuật AWS từ tiếng Anh sang tiếng Việt — về FSx for NetApp ONTAP, HPC trong hàng không và Elastic Beanstalk với Amazon Q.",
+            en: "Translated 3 AWS technical blogs from English to Vietnamese — covering FSx for NetApp ONTAP, HPC in Aerospace, and Elastic Beanstalk with Amazon Q.",
+        },
+        Desc: {
+            vi: "Trong kỳ thực tập tại AWS Vietnam, tôi đã dịch 3 blog kỹ thuật AWS từ tiếng Anh sang tiếng Việt để kiến thức cloud dễ tiếp cận hơn với cộng đồng dev Việt. Mỗi bản dịch đòi hỏi hiểu sâu khái niệm kỹ thuật — từ chiến lược replication của Amazon FSx for NetApp ONTAP, kiến trúc HPC cho CFD hàng không, tới troubleshoot Elastic Beanstalk có AI hỗ trợ với Amazon Q Developer CLI. Công việc này giúp tôi rèn kỹ năng viết kỹ thuật và hiểu sâu hơn về AWS từ storage, compute đến AI tooling.",
+            en: "As part of my AWS Vietnam internship, I translated 3 technical AWS blogs from English to Vietnamese, making cloud knowledge more accessible to the Vietnamese developer community. Each translation required deep understanding of the technical concepts — covering Amazon FSx for NetApp ONTAP replication strategies, HPC architectures for aerospace CFD simulations, and AI-assisted Elastic Beanstalk troubleshooting with Amazon Q Developer CLI. The work sharpened my technical writing skills and deepened my AWS expertise across storage, compute, and AI tooling.",
+        },
+        Logo: BlogTranslationLogo,
+        Shot: BlogTranslationShot,
+        Mockup: BlogTranslationMockup,
+        Theme: "#0EA5E9",
         Status: "completed",
-        Link: "https://pikture.netlify.app/",
-        Source: "https://github.com/ChiragChrg/pikture",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.React, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: []
-    },
-    {
-        Name: "Days Beyond",
-        ShortDesc: "Track the progress of the current year in days, hours, minutes, and seconds. Discover special occasions, search specific dates, and calculate your age.",
-        Desc: "Days Beyond is a feature-rich calendar event app that goes beyond traditional functionality. It not only helps you stay organized with events but also showcases the progress of the current year in percentage. Additionally, it displays the exact duration—days, hours, minutes, and seconds since January 1st of the current year, adding a unique perspective to time. Discover the significance of today, uncover special occasions, and easily search for specific dates. Furthermore, Days Beyond accurately calculates your age, ensuring precision and convenience.",
-        Logo: DaysbeyondLogo,
-        Shot: DaysbeyondShots,
-        Mockup: DaysbeyondMockup,
-        Theme: "#008ee0",
-        Status: "completed",
-        Link: "https://daysbeyond.netlify.app/",
-        Source: "https://github.com/ChiragChrg/DaysBeyond",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.RESTAPI],
+        Link: "https://github.com/Ttuandatt",
+        Source: "https://github.com/Ttuandatt",
+        Tech: [TechInfo.AWS, TechInfo.Git],
         features: [
             {
-                title: "Accurate Time Progress",
-                description: "Calculate exact time elapsed since Jan 1. Display months, days, hours, minutes, and seconds passed since the beginning of the year."
+                title: { vi: "FSx for NetApp ONTAP", en: "FSx for NetApp ONTAP" },
+                description: {
+                    vi: "Replication dữ liệu scalable với Amazon FSx for NetApp ONTAP và NetApp SnapMirror — bảo vệ dữ liệu cross-region và tối ưu hiệu năng.",
+                    en: "Scalable data replication with Amazon FSx for NetApp ONTAP and NetApp SnapMirror — covering cross-region data protection and performance optimization.",
+                },
             },
             {
-                title: "Accurate User Age Calculation",
-                description: "Calculate user ages accurately based on their date of birth. Display age in years, months, and days with precision."
+                title: { vi: "HPC cho hàng không", en: "HPC for Aerospace" },
+                description: {
+                    vi: "High-Performance Computing trên AWS cho đổi mới ngành hàng không — CFD, phân tích kết cấu, auto-scaling và tối ưu chi phí.",
+                    en: "High-Performance Computing on AWS for aerospace innovation — CFD simulations, structural analysis, auto-scaling, and cost optimization.",
+                },
             },
             {
-                title: "Significance of Today",
-                description: "Display the significance of today's date. Highlight special events, holidays, birthdays, or historical events that occurred on this day."
+                title: { vi: "Elastic Beanstalk + Amazon Q", en: "Elastic Beanstalk + Amazon Q" },
+                description: {
+                    vi: "Troubleshoot Elastic Beanstalk có AI hỗ trợ qua Amazon Q Developer CLI — workflow debug thực tế và best practices.",
+                    en: "AI-assisted troubleshooting of Elastic Beanstalk environments using Amazon Q Developer CLI — practical debugging workflows and best practices.",
+                },
             },
             {
-                title: "Color of the Day",
-                description: "Show the color associated with the current day. Use color psychology to represent the mood or energy of the day."
+                title: { vi: "Chính xác kỹ thuật", en: "Technical Accuracy" },
+                description: {
+                    vi: "Giữ độ chính xác kỹ thuật trong khi điều chỉnh câu chữ cho người đọc tiếng Việt — không paraphrase mất thông tin.",
+                    en: "Preserved technical precision while adapting phrasing for Vietnamese readers — no lossy paraphrasing.",
+                },
             },
-            FeatureList.Responsive,
-            FeatureList.SEO,
+            {
+                title: { vi: "Tác động cộng đồng", en: "Community Impact" },
+                description: {
+                    vi: "Thu hẹp khoảng cách ngôn ngữ cho dev Việt khi tiếp cận AWS storage, HPC và cloud AI-assisted.",
+                    en: "Bridged the language gap for Vietnamese developers exploring AWS storage, HPC, and AI-assisted cloud operations.",
+                },
+            },
         ],
         hideProject: false,
-        LogoSize: 55,
+        LogoSize: 60,
         versions: []
     },
-    {
-        Name: "ARMS v1",
-        ShortDesc: "Trouble finding your Study Materials? ARMS helps you to find PDFs for all subjects in one place. Students can easily login and download PDF files.",
-        Desc: "Trouble finding your Study Materials? ARMS helps you to find PDFs for all subjects in one place. Students can easily login and download PDF files.",
-        Logo: ArmsPhpLogo,
-        Shot: Armsv1Shots,
-        Mockup: ARMSv1Mockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "http://arms-v1.infinityfreeapp.com/",
-        Source: "https://github.com/ChiragChrg/ARMS-PHP",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.PHP, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: [
-            { title: "ARMS v3", version: "3" },
-            { title: "ARMS v2", version: "2" },
-            { title: "ARMS v1", version: "1" },
-        ]
-    },
-    {
-        Name: "Film Stack",
-        ShortDesc: "Discover trending movies and access details of all films and search for any movie you desire. Easily search for any film and immerse in the world of cinema.",
-        Desc: "FilmStack is the ultimate movie app that brings you all the details of trending films at your fingertips. Explore a vast collection of movies, access comprehensive information, and immerse yourself in the world of cinema. With FilmStack, you can effortlessly search for any movie, making it easy to find your favorite movies.",
-        Logo: FilmstackLogo,
-        Shot: FilmstackShots,
-        Mockup: ARMSv3Mockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "https://filmstack.netlify.app/",
-        Source: "https://github.com/ChiragChrg/FilmStack",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: []
-    },
-    {
-        Name: "CovidTrax",
-        ShortDesc: "",
-        Desc: "Search global COVID-19 statistics for each Country and Indian States and Districts",
-        Logo: CovidtraxLogo,
-        Shot: CovidTraxShots,
-        Mockup: ARMSv3Mockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "https://covidtrax.netlify.app/",
-        Source: "https://github.com/ChiragChrg/CovidTrax",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: []
-    },
-    {
-        Name: "CliMate",
-        ShortDesc: "Get instant weather updates. Accurate and easy to use, access weather updates for any location, including your current area using Geolocation support.",
-        Desc: "CliMate is a user friendly weather app that keeps you informed about the current conditions of any location. With CliMate, you can effortlessly access accurate weather updates for any place you choose. Utilizing geolocation support, it can even detect your current location, ensuring you always have the most precise weather information at your fingertips. Stay informed and be prepared with CliMate.",
-        Logo: ClimateLogo,
-        Shot: ClimateShots,
-        Mockup: ClimateMockup,
-        Theme: "#fff",
-        Status: "completed",
-        Link: "https://klimate.netlify.app/",
-        Source: "https://github.com/ChiragChrg/CliMate",
-        Tech: [TechInfo.HTML, TechInfo.CSS, TechInfo.JavaScript, TechInfo.RESTAPI],
-        features: [
-            FeatureList.Responsive,
-            FeatureList.SEO,
-        ],
-        hideProject: true,
-        LogoSize: 55,
-        versions: [
-            { title: "Vortexa", version: "2" },
-            { title: "CliMate", version: "1" },
-        ]
-    }
 ]

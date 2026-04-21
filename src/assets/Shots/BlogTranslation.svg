@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bt)"/>
+  <g transform="translate(140,110)">
+    <rect width="220" height="280" rx="10" fill="#fff" opacity="0.95"/>
+    <rect x="20" y="30" width="180" height="8" fill="#0EA5E9"/>
+    <rect x="20" y="50" width="160" height="6" fill="#64748B"/>
+    <rect x="20" y="70" width="180" height="6" fill="#64748B"/>
+    <rect x="20" y="90" width="140" height="6" fill="#64748B"/>
+    <rect x="20" y="120" width="180" height="6" fill="#64748B"/>
+    <rect x="20" y="140" width="160" height="6" fill="#64748B"/>
+  </g>
+  <g transform="translate(440,110)">
+    <rect width="220" height="280" rx="10" fill="#fff"/>
+    <rect x="20" y="30" width="180" height="8" fill="#FF9900"/>
+    <rect x="20" y="50" width="160" height="6" fill="#64748B"/>
+    <rect x="20" y="70" width="180" height="6" fill="#64748B"/>
+    <rect x="20" y="90" width="140" height="6" fill="#64748B"/>
+    <rect x="20" y="120" width="180" height="6" fill="#64748B"/>
+    <rect x="20" y="140" width="160" height="6" fill="#64748B"/>
+  </g>
+  <text x="400" y="245" text-anchor="middle" font-family="Ubuntu, sans-serif" font-size="48" fill="#fff">→</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Ubuntu, sans-serif" font-weight="700" font-size="32" fill="#fff">AWS Technical Blog Translation</text>
+  <text x="400" y="460" text-anchor="middle" font-family="Poppins, sans-serif" font-size="16" fill="#cbd5e1">English → Vietnamese · FSx · HPC · Amazon Q</text>
+</svg>

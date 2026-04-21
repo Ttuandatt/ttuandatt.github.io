@@ -1,0 +1,197 @@
+---
+import { SectionTitle } from "./UI";
+import { getLangFromUrl, useTranslations, pickLocale, type Localized } from "../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type TimelineItem = {
+    title: Localized;
+    company: Localized;
+    location: Localized;
+    period: string;
+    description: Localized;
+    highlights: Localized[];
+    technologies: string[];
+};
+
+const timeline: TimelineItem[] = [
+    {
+        title: {
+            vi: "Thực tập sinh FCJ Cloud",
+            en: "FCJ Cloud Intern",
+        },
+        company: "Amazon Web Services Vietnam Co., Ltd.",
+        location: {
+            vi: "TP. Hồ Chí Minh, Việt Nam",
+            en: "Ho Chi Minh City, Vietnam",
+        },
+        period: "Jun 2025 — Dec 2025",
+        description: {
+            vi: "Xây dựng nền tảng SaaS quản lý công việc kiểu Todoist với microservices Spring Boot, Aurora MySQL, Redis và Kafka. Làm việc trong team 4 người tách monolith thành 5 microservices độc lập.",
+            en: "Built a Todoist-like SaaS Task Management platform with Spring Boot microservices, Aurora MySQL, Redis, and Kafka. Worked in a 4-member team to decompose a monolith into 5 independent microservices.",
+        },
+        highlights: [
+            {
+                vi: "Phát triển Auth Service với xác thực JWT, đăng nhập OAuth2 (Google/Facebook), khôi phục mật khẩu và quản lý token",
+                en: "Developed Auth Service with JWT authentication, OAuth2 (Google/Facebook) login, password recovery, and token management",
+            },
+            {
+                vi: "Triển khai đăng ký, đăng nhập bảo mật và phân quyền dựa trên token cho toàn bộ microservices",
+                en: "Implemented secure registration, login, and token-based authorization for all microservices",
+            },
+            {
+                vi: "Thiết kế kiến trúc AWS đa region cho triển khai có độ sẵn sàng cao và khả năng mở rộng",
+                en: "Designed multi-region AWS architecture for scalable, highly available deployment",
+            },
+            {
+                vi: "Tích hợp Auth Service với API Gateway và User Service để định tuyến request mạch lạc",
+                en: "Integrated Auth Service with API Gateway and User Service for seamless request routing",
+            },
+            {
+                vi: "Đóng gói services bằng Docker cho triển khai local và cloud",
+                en: "Containerized services with Docker for local and cloud deployment",
+            },
+            {
+                vi: "Xây pipeline CI/CD tự động với GitHub Actions — giảm 50% thời gian release thủ công",
+                en: "Implemented automated CI/CD pipelines using GitHub Actions — cut manual release time by 50%",
+            },
+        ],
+        technologies: [
+            "Spring Boot",
+            "Spring Security",
+            "JWT / OAuth2",
+            "AWS ECS Fargate",
+            "Aurora MySQL",
+            "Redis",
+            "Kafka",
+            "Docker",
+            "GitHub Actions",
+        ],
+    },
+];
+
+type EducationItem = {
+    degree: Localized;
+    school: Localized;
+    location: Localized;
+    period: string;
+    description: Localized;
+};
+
+const education: EducationItem[] = [
+    {
+        degree: {
+            vi: "Cử nhân Công nghệ Thông tin",
+            en: "Bachelor of Science in Information Technology",
+        },
+        school: {
+            vi: "Đại học Sài Gòn",
+            en: "Sai Gon University",
+        },
+        location: {
+            vi: "TP. Hồ Chí Minh, Việt Nam",
+            en: "Ho Chi Minh City, Vietnam",
+        },
+        period: "Sep 2022 — Jun 2026",
+        description: {
+            vi: "Tập trung vào kỹ thuật phần mềm, thiết kế cơ sở dữ liệu, OOP và phát triển backend.",
+            en: "Focused on software engineering, database design, OOP, and backend development.",
+        },
+    },
+];
+
+type CertItem = { name: string; type: Localized };
+
+const certifications: CertItem[] = [
+    {
+        name: "IELTS 7.0",
+        type: {
+            vi: "Chứng chỉ Ngoại ngữ",
+            en: "Language Proficiency",
+        },
+    },
+];
+---
+
+<section
+    id="experience"
+    class="w-full min-h-screen px-6 py-4 pt-14 bg-background"
+>
+    <SectionTitle title={t("experience.title")} color="primary">
+        <div class="Fade_Up w-full flex flex-col gap-8 lg:px-12 pb-6 pt-6">
+            {
+                timeline.map((item) => (
+                    <div class="relative border-l-2 border-primary/60 pl-6 md:pl-8 py-4 bg-LinkBtnGradient rounded-md">
+                        <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-primary shadow-[0_0_12px_var(--primaryLite)]" />
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                            <div>
+                                <h3 class="font-ubuntu text-[1.3em] gradientText">
+                                    {pickLocale(item.title, lang)}
+                                </h3>
+                                <p class="text-[1.05em] font-semibold">
+                                    {pickLocale(item.company, lang)}
+                                </p>
+                                <p class="text-sm opacity-70">
+                                    {pickLocale(item.location, lang)}
+                                </p>
+                            </div>
+                            <span class="text-sm md:text-base font-semibold text-primary whitespace-nowrap">
+                                {item.period}
+                            </span>
+                        </div>
+                        <p class="text-justify mt-3 text-[0.95em] opacity-90">
+                            {pickLocale(item.description, lang)}
+                        </p>
+                        <ul class="mt-3 list-disc list-inside text-[0.9em] flex flex-col gap-1">
+                            {item.highlights.map((h) => (
+                                <li class="text-justify opacity-90">{pickLocale(h, lang)}</li>
+                            ))}
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            {item.technologies.map((tech) => (
+                                <span class="text-xs px-2 py-1 rounded-md bg-primary/20 border border-primary/40">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="Fade_Up w-full flex flex-col lg:flex-row gap-6 lg:px-12 pt-4 pb-6">
+            <div class="flex-1 bg-LinkBtnGradient rounded-md p-5 border border-primary/30">
+                <h3 class="font-ubuntu text-[1.2em] gradientText mb-3">
+                    {t("experience.education")}
+                </h3>
+                {education.map((e) => (
+                    <div class="flex flex-col gap-1">
+                        <p class="font-semibold">{pickLocale(e.degree, lang)}</p>
+                        <p class="opacity-90">{pickLocale(e.school, lang)}</p>
+                        <p class="text-sm opacity-70">
+                            {pickLocale(e.location, lang)} · {e.period}
+                        </p>
+                        <p class="text-sm opacity-85 mt-2 text-justify">
+                            {pickLocale(e.description, lang)}
+                        </p>
+                    </div>
+                ))}
+            </div>
+
+            <div class="flex-1 bg-LinkBtnGradient rounded-md p-5 border border-primary/30">
+                <h3 class="font-ubuntu text-[1.2em] gradientText mb-3">
+                    {t("experience.certifications")}
+                </h3>
+                <ul class="flex flex-col gap-2">
+                    {certifications.map((c) => (
+                        <li class="flex justify-between items-center">
+                            <span class="font-semibold">{c.name}</span>
+                            <span class="text-xs opacity-70">{pickLocale(c.type, lang)}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </SectionTitle>
+</section>

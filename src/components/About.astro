@@ -1,20 +1,24 @@
 ---
 import { Image } from "astro:assets";
-import Avatar_250 from "../Avatar_250.webp";
+import Avatar from "../anhthe.jpg";
 import { SectionTitle } from "./UI";
+import { getLangFromUrl, useTranslations } from "../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="about" class="w-full min-h-screen px-6 py-4 pt-14 bg-background">
     <SectionTitle
-        title="About Me"
+        title={t("about.title")}
         color="primary"
         className="h-screen flex flex-col justify-center"
     >
         <div class="flex_center flex-col lg:flex-row w-full h-full py-10 gap-8">
             <Image
-                src={Avatar_250}
+                src={Avatar}
                 alt="About_Avatar"
-                class="Fade_Up rounded-full scale-x-[-1] lg:mx-14"
+                class="Fade_Up rounded-full object-cover lg:mx-14"
                 width={225}
                 height={225}
                 loading="lazy"
@@ -23,35 +27,35 @@ import { SectionTitle } from "./UI";
             <div
                 class="Fade_Up w-full md:w-[80%] lg:w-[60%] flex justify-center items-start flex-col gap-4 lg:border-l border-primary py-8 lg:pl-10"
             >
-                <h2 class="Fade_Up text-[1.5em] font-bold">Hey there! 👋🏻</h2>
-                <p class="Fade_Up text-justify">
-                    I'm Chirag, a full stack web developer with a strong passion
-                    for crafting digital realms that captivate and inspire.
-                </p>
-                <p class="Fade_Up text-justify">
-                    I specialize in creating dynamic and interactive UI/UX
-                    experience. I stay up to date with the latest tools and
-                    techniques and worked on a wide range of projects, from
-                    personal websites to large-scale applications, sharpening my
-                    problem solving skills and fostering creativity.
-                </p>
-                <p class="Fade_Up text-justify">
-                    If you're seeking a dedicated and passionate web developer,
-                    I'm eager to collaborate with you. Let's bring your ideas to
-                    life!
-                </p>
+                <h2 class="Fade_Up text-[1.5em] font-bold">{t("about.hi")}</h2>
+                <p class="Fade_Up text-justify" set:html={t("about.bio1")}></p>
+                <p class="Fade_Up text-justify">{t("about.bio2")}</p>
+                <p class="Fade_Up text-justify">{t("about.bio3")}</p>
+                <ul class="Fade_Up text-justify mt-2 text-sm list-disc list-inside">
+                    <li><b>{t("about.email")}:</b> pcanhtuandat@gmail.com</li>
+                    <li><b>{t("about.phone")}:</b> (+84)867829257</li>
+                    <li><b>{t("about.address")}:</b> {t("about.addressValue")}</li>
+                    <li><b>{t("about.school")}:</b> {t("about.schoolValue")}</li>
+                </ul>
+                <div class="Fade_Up flex flex-wrap gap-4 mt-4">
+                    <div class="bg-primary/10 rounded-lg px-4 py-2 text-center">
+                        <div class="text-lg font-bold">6</div>
+                        <div class="text-xs">{t("about.stat.months")}</div>
+                    </div>
+                    <div class="bg-primary/10 rounded-lg px-4 py-2 text-center">
+                        <div class="text-lg font-bold">5</div>
+                        <div class="text-xs">{t("about.stat.microservices")}</div>
+                    </div>
+                    <div class="bg-primary/10 rounded-lg px-4 py-2 text-center">
+                        <div class="text-lg font-bold">7.0</div>
+                        <div class="text-xs">{t("about.stat.ielts")}</div>
+                    </div>
+                    <div class="bg-primary/10 rounded-lg px-4 py-2 text-center">
+                        <div class="text-lg font-bold">2</div>
+                        <div class="text-xs">{t("about.stat.projects")}</div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- <picture class="flex_center">
-            <source
-                media="(prefers-color-scheme: dark)"
-                srcset="https://raw.githubusercontent.com/ChiragChrg/ChiragChrg/output/github-contribution-grid-snake-dark.svg"
-            />
-            <img
-                alt="github contribution grid snake animation"
-                src="https://raw.githubusercontent.com/ChiragChrg/ChiragChrg/output/github-contribution-grid-snake.svg"
-            />
-        </picture> -->
     </SectionTitle>
 </section>

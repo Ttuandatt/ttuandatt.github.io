@@ -1,12 +1,12 @@
 {
-  "name": "portfolio",
+  "name": "tuandat-portfolio",
   "type": "module",
   "version": "1.0.3",
-  "homepage": "https://github.com/ChiragChrg/portfolio",
+  "homepage": "https://github.com/Ttuandatt",
   "author": {
-    "name": "ChiragChrg",
-    "email": "chiruchirag2001@gmail.com",
-    "url": "https://chiragchrg.netlify.app/"
+    "name": "Phan Canh Tuan Dat",
+    "email": "pcanhtuandat@gmail.com",
+    "url": "https://github.com/Ttuandatt"
   },
   "scripts": {
     "dev": "astro dev --host",

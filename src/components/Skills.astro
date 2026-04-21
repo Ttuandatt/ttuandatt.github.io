@@ -1,15 +1,19 @@
 ---
 import { CenterTitle, SkillTitle, SkillGrid } from "./UI";
 import {
-    FrontendStack,
     BackendStack,
+    DatabaseStack,
+    CloudStack,
     ProgrammingStack,
-    ToolsStack,
 } from "../utils/SkillStack";
+import { getLangFromUrl, useTranslations } from "../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="skills" class="w-full min-h-screen px-6 py-4 pt-14 bg-background">
-    <CenterTitle title="Tech Stack" color="primary" />
+    <CenterTitle title={t("skills.title")} color="primary" />
 
     <div
         class="Fade_Up flex justify-center items-start flex-col lg:flex-row gap-2"
@@ -17,15 +21,15 @@ import {
         <div
             class="Fade_Up flex_center flex-col gap-4 py-4 xs:p-4 w-full h-full"
         >
-            <SkillTitle title="Front-End" color="primary" />
-            <SkillGrid stack={FrontendStack} />
+            <SkillTitle title={t("skills.backend")} color="primary" />
+            <SkillGrid stack={BackendStack} />
         </div>
 
         <div
             class="Fade_Up flex_center flex-col gap-4 py-4 xs:p-4 w-full h-full"
         >
-            <SkillTitle title="Back-End" color="primary" />
-            <SkillGrid stack={BackendStack} />
+            <SkillTitle title={t("skills.database")} color="primary" />
+            <SkillGrid stack={DatabaseStack} />
         </div>
     </div>
 
@@ -33,15 +37,15 @@ import {
         <div
             class="Fade_Up flex_center flex-col gap-4 py-4 xs:p-4 w-full h-full"
         >
-            <SkillTitle title="Programming" color="primary" />
-            <SkillGrid stack={ProgrammingStack} />
+            <SkillTitle title={t("skills.cloud")} color="primary" />
+            <SkillGrid stack={CloudStack} />
         </div>
 
         <div
             class="Fade_Up flex_center flex-col gap-4 py-4 xs:p-4 w-full h-full"
         >
-            <SkillTitle title="Tech & Tools" color="primary" />
-            <SkillGrid stack={ToolsStack} />
+            <SkillTitle title={t("skills.programming")} color="primary" />
+            <SkillGrid stack={ProgrammingStack} />
         </div>
     </div>
 </section>

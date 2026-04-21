@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="24" fill="#7C3AED"/>
+  <g fill="#fff">
+    <path d="M24 34c16-6 32-4 40 0v62c-8-4-24-6-40 0z"/>
+    <path d="M104 34c-16-6-32-4-40 0v62c8-4 24-6 40 0z"/>
+  </g>
+  <text x="64" y="78" text-anchor="middle" font-family="Ubuntu, sans-serif" font-weight="700" font-size="18" fill="#7C3AED">IELTS</text>
+</svg>

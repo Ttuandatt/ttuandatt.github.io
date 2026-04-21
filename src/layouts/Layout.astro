@@ -4,26 +4,36 @@ import { AstroFont } from "astro-font";
 import { join } from "node:path";
 import { Header, MobileHeader, Cursor } from "../components/UI";
 import { Footer } from "../components";
+import { getLangFromUrl } from "../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const siteOrigin = Astro.site?.origin ?? "";
+const pathWithoutLocale = lang === "vi" ? Astro.url.pathname : Astro.url.pathname.replace(/^\/en/, "") || "/";
+const viHref = `${siteOrigin}${pathWithoutLocale}`;
+const enHref = `${siteOrigin}/en${pathWithoutLocale === "/" ? "/" : pathWithoutLocale}`;
+
+const seoTitle = lang === "vi"
+    ? "Phan Canh Tuan Dat | Java Backend Developer Portfolio"
+    : "Phan Canh Tuan Dat | Java Backend Developer Portfolio";
+const seoDescription = lang === "vi"
+    ? "Software Developer chuyên Java Spring Boot, Microservices và AWS Cloud. 6 tháng thực tập tại AWS Vietnam. Xây dựng hệ thống backend mở rộng."
+    : "Aspiring Backend Software Engineer specializing in Java Spring Boot, Microservices, and AWS Cloud. 6-month intern at AWS Vietnam. Building scalable backend systems.";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} class="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#000" />
+		<meta name="theme-color" content="#F8FAFC" />
 		<meta name="robots" content="index, follow" />
 		<meta
-			name="google-site-verification"
-			content="YRAUUyc8TP4QJ1s53KAdLxcON9xifQf33BnLeP-F_5Y"
-		/>
-		<meta
 			name="keywords"
-			content="chiragchrg,chrgchirag, chirag, chrg, @ChrgChirag, portfolio, vortexa, ARMS, ARMS2.0, ARMS v3, Academic, Resource, Management, System, xrecon, @ChrgChirag, chiruchirag2001, chiragchrg.netlify.app, Fullstack Web Developer, My Personal Portfolio, ChiragChrg.github.io, I create Exciting Stuff on the Internet., epitome, aimit, epitome2k24,Epitome 2k24, Oriv.io, Oriv"
+			content="Phan Canh Tuan Dat, Tuan Dat, Ttuandatt, Java Developer, Spring Boot, AWS Cloud, Backend Developer, Microservices, Portfolio, Saigon University, FCJ Cloud Intern"
 		/>
-		<meta name="author" content="ChiragChrg" />
-		<meta name="publisher" content="ChiragChrg" />
+		<meta name="author" content="Phan Canh Tuan Dat" />
+		<meta name="publisher" content="Phan Canh Tuan Dat" />
 		<link rel="manifest" href="/manifest.json" />
 
 		<!-- Preload CSS Styles -->
@@ -32,25 +42,20 @@ import { Footer } from "../components";
 		<link rel="preload stylesheet" href="/styles/cursor.css" as="style" />
 
 		<SEO
-			title="ChiragChrg | My Personal Portfolio | Fullstack Web Developer"
-			description="Welcome to your gateway to the dynamic world of web development. Dive into a digital realm where my coding and design expertise creates exceptional UI/UX."
-			canonical="https://chiragchrg.netlify.app/"
+			title={seoTitle}
+			description={seoDescription}
 			openGraph={{
 				basic: {
-					title: "ChiragChrg | My Personal Portfolio | Fullstack Web Developer",
+					title: seoTitle,
 					type: "website",
-					image: "https://raw.githubusercontent.com/ChiragChrg/ChiragChrg.github.io/main/Avatar.webp",
-					url: "https://chiragchrg.netlify.app/",
+					image: "/favicon.png",
+					url: "/",
 				},
 			}}
 			twitter={{
-				title: "ChiragChrg | My Personal Portfolio | Fullstack Web Developer",
-				description:
-					"Welcome to your gateway to the dynamic world of web development. Dive into a digital realm where my coding and design expertise creates exceptional UI/UX.",
+				title: seoTitle,
+				description: seoDescription,
 				card: "summary",
-				site: "@ChrgChirag",
-				creator: "@ChrgChirag",
-				image: "https://raw.githubusercontent.com/ChiragChrg/ChiragChrg.github.io/main/Avatar.webp",
 			}}
 			extend={{
 				link: [
@@ -65,12 +70,9 @@ import { Footer } from "../components";
 						type: "image/png",
 						href: "/favicon.png",
 					},
-				],
-				meta: [
-					{
-						name: "twitter:url",
-						content: "https://chiragchrg.netlify.app/",
-					},
+					{ rel: "alternate", hreflang: "vi", href: viHref },
+					{ rel: "alternate", hreflang: "en", href: enHref },
+					{ rel: "alternate", hreflang: "x-default", href: viHref },
 				],
 			}}
 		/>
@@ -143,17 +145,17 @@ import { Footer } from "../components";
 				--baseLite: rgba(0, 0, 0, 0.85);
 				--text: #fff;
 
-				--pH: 264;
-				--pS: 100%;
-				--pL: 50%;
+				--pH: 231;
+				--pS: 75%;
+				--pL: 60%;
 
-				--sH: 315;
-				--sS: 100%;
-				--sL: 50%;
+				--sH: 200;
+				--sS: 85%;
+				--sL: 55%;
 
-				--mH: 275;
-				--mS: 100%;
-				--mL: 47%;
+				--mH: 215;
+				--mS: 70%;
+				--mL: 55%;
 
 				/* --primary: 264, 100%, 50%;
 				--secondary: 315, 100%, 50%;
@@ -168,9 +170,9 @@ import { Footer } from "../components";
 				--secondaryLite: hsla(var(--secondary), 0.6);
 				--secondaryLiteAlt: hsla(var(--secondary), 0.3);
 
-				--footer: hsl(264, 100%, 15%);
-				--footerSvgA: hsl(259, 75%, 10%);
-				--footerSvgB: hsl(256, 60%, 5%);
+				--footer: hsl(231, 60%, 15%);
+				--footerSvgA: hsl(220, 55%, 10%);
+				--footerSvgB: hsl(215, 50%, 5%);
 
 				--gradient: linear-gradient(
 					to right,
@@ -217,13 +219,13 @@ import { Footer } from "../components";
 				);
 				--SkillGradient: linear-gradient(
 					-135deg,
-					hsla(276, 50%, 10%, 0.8),
-					hsla(296, 50%, 10%, 0.5)
+					hsla(231, 50%, 10%, 0.8),
+					hsla(200, 50%, 10%, 0.5)
 				);
 				--SkillGradientAlt: linear-gradient(
 					-135deg,
-					hsla(276, 50%, 10%, 0.4),
-					hsla(296, 50%, 10%, 0.25)
+					hsla(231, 50%, 10%, 0.4),
+					hsla(200, 50%, 10%, 0.25)
 				);
 				--orbitGradient: conic-gradient(
 					transparent,
@@ -250,21 +252,21 @@ import { Footer } from "../components";
 			}
 
 			html.light {
-				--base: #fff;
-				--baseLite: rgba(255, 255, 255, 0.85);
-				--text: #000;
+				--base: #F8FAFC;
+				--baseLite: rgba(248, 250, 252, 0.85);
+				--text: #0F172A;
 
-				--pH: 264;
-				--pS: 100%;
-				--pL: 50%;
+				--pH: 231;
+				--pS: 75%;
+				--pL: 55%;
 
-				--sH: 315;
-				--sS: 100%;
+				--sH: 200;
+				--sS: 85%;
 				--sL: 50%;
 
-				--mH: 275;
-				--mS: 100%;
-				--mL: 47%;
+				--mH: 215;
+				--mS: 70%;
+				--mL: 50%;
 
 				/* --pH: 240;
 				--pS: 60%;

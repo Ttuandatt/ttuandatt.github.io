@@ -6,7 +6,37 @@ type StatusType = {
     message: string
 }
 
-const ContactForm = () => {
+export type ContactFormStrings = {
+    name: string
+    namePlaceholder: string
+    email: string
+    message: string
+    messagePlaceholder: string
+    sending: string
+    submit: string
+    success: string
+    invalidEmail: string
+    failed: string
+}
+
+const defaultStrings: ContactFormStrings = {
+    name: "Name",
+    namePlaceholder: "Enter your Name",
+    email: "Email",
+    message: "Message",
+    messagePlaceholder: "Enter your Message",
+    sending: "Sending",
+    submit: "Submit",
+    success: "👍 Message Sent!",
+    invalidEmail: "🙄 Invalid Email!",
+    failed: "😵 Message not Sent",
+}
+
+type Props = {
+    strings?: ContactFormStrings
+}
+
+const ContactForm = ({ strings = defaultStrings }: Props) => {
     const [mailStatus, setMailStatus] = useState<StatusType>({ status: false, message: "" })
     const [isLoading, setisLoading] = useState<boolean>(false)
 
@@ -33,7 +63,7 @@ const ContactForm = () => {
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
             if (!emailRegex.test(email)) {
-                throw new Error('🙄 Invalid Email ID!')
+                throw new Error(strings.invalidEmail)
             }
 
             setisLoading(true)
@@ -45,10 +75,10 @@ const ContactForm = () => {
             );
 
             if (mailRes.status !== 200) {
-                throw new Error("😵 Message not Sent")
+                throw new Error(strings.failed)
             }
 
-            setMailStatus({ status: true, message: "👍 Message Sent!" })
+            setMailStatus({ status: true, message: strings.success })
             setisLoading(false)
 
             NameRef.current.value = ""
@@ -69,12 +99,12 @@ const ContactForm = () => {
                 htmlFor="name"
                 className="noCustomCursor w-full h-fit flex justify-center items-start flex-col px-1 py-2"
             >
-                Name
+                {strings.name}
                 <input
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="Enter your Name"
+                    placeholder={strings.namePlaceholder}
                     className="w-full p-2 mt-1 rounded-md border-none outline-none bg-background text-foreground"
                     autoComplete='name'
                     required
@@ -84,7 +114,7 @@ const ContactForm = () => {
                 htmlFor="email"
                 className="noCustomCursor w-full h-fit flex justify-center items-start flex-col px-1 py-2"
             >
-                Email
+                {strings.email}
                 <input
                     type="email"
                     id="email"
@@ -99,12 +129,12 @@ const ContactForm = () => {
                 htmlFor="message"
                 className="noCustomCursor w-full h-fit flex justify-center items-start flex-col px-1 py-2"
             >
-                Message
+                {strings.message}
                 <textarea
                     rows={5}
                     id="message"
                     name="message"
-                    placeholder="Enter your Message"
+                    placeholder={strings.messagePlaceholder}
                     className="w-full p-2 mt-1 rounded-md border-none outline-none bg-background text-foreground resize-none"
                     ref={MessageRef} />
             </label>
@@ -118,12 +148,12 @@ const ContactForm = () => {
                     {
                         isLoading ? (
                             <>
-                                <span>Sending</span>
+                                <span>{strings.sending}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
                             </>
                         ) : (
                             <>
-                                <span>Submit</span>
+                                <span>{strings.submit}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z" /><path d="M6 12h16" /></svg>
                             </>
                         )

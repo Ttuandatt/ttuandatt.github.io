@@ -1,15 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import {
-    DiscordIcon,
-    FaceBookIcon,
     GithubIcon,
-    InstagramIcon,
+    GmailIcon,
     LinkedinIcon,
-    LogoIcon,
-    TwitterIcon,
 } from "../assets/SVGs";
+import { getLangFromUrl, useTranslations } from "../i18n";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
 ---
 
@@ -38,50 +37,35 @@ const currentYear = new Date().getFullYear();
     </svg>
 
     <div class="w-full flex_center flex-col gap-2">
-        <Image src={LogoIcon} alt="LogoIcon" width={80} height={80} />
-        <span>ChiragChrg | Portfolio</span>
+        <span class="font-ubuntu text-[1.4em]">Phan Canh Tuan Dat | Portfolio</span>
     </div>
 
-    <div class="grid grid-cols-3 lg:grid-cols-6 gap-x-20 gap-y-10 lg:gap-20">
+    <div class="grid grid-cols-3 gap-x-20 gap-y-10 lg:gap-20">
         <a
-            href="https://www.facebook.com/ChiragChrg/"
+            href="https://github.com/Ttuandatt"
             target="_blank"
             rel="noreferrer"
+            aria-label="GitHub"
         >
-            <Image src={FaceBookIcon} alt="FaceBook" width={30} height={30} />
-        </a>
-        <a href="https://x.com/ChrgChirag" target="_blank" rel="noreferrer">
-            <Image src={TwitterIcon} alt="Twitter X" width={30} height={30} />
+            <Image src={GithubIcon} alt="GitHub" width={30} height={30} />
         </a>
         <a
-            href="https://www.instagram.com/chiragchrg/"
+            href="https://www.linkedin.com/in/tuan-dat-phan-canh-a83917283/"
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn"
         >
-            <Image src={InstagramIcon} alt="Instagram" width={30} height={30} />
+            <Image src={LinkedinIcon} alt="LinkedIn" width={30} height={30} />
         </a>
         <a
-            href="https://in.linkedin.com/in/chiragchrg"
+            href="mailto:pcanhtuandat@gmail.com"
             target="_blank"
             rel="noreferrer"
+            aria-label="Email"
         >
-            <Image src={LinkedinIcon} alt="Discord" width={30} height={30} />
-        </a>
-        <a
-            href="https://github.com/ChiragChrg"
-            target="_blank"
-            rel="noreferrer"
-        >
-            <Image src={GithubIcon} alt="Discord" width={30} height={30} />
-        </a>
-        <a
-            href="https://discord.gg/WmVQjMryDz"
-            target="_blank"
-            rel="noreferrer"
-        >
-            <Image src={DiscordIcon} alt="Discord" width={30} height={30} />
+            <Image src={GmailIcon} alt="Email" width={30} height={30} />
         </a>
     </div>
 
-    <span>© Copyright 2023-{currentYear} ChiragChrg</span>
+    <span>{t("footer.copyright")} 2024-{currentYear} Phan Canh Tuan Dat</span>
 </footer>

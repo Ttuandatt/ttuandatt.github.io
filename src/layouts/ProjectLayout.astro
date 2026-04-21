@@ -16,15 +16,10 @@ import { Footer } from "../components";
         <meta name="theme-color" content="#000" />
         <meta name="robots" content="index, follow" />
         <meta
-            name="google-site-verification"
-            content="YRAUUyc8TP4QJ1s53KAdLxcON9xifQf33BnLeP-F_5Y"
-        />
-        <meta
             name="keywords"
-            content="chiragchrg,chrgchirag, @ChrgChirag, portfolio, vortexa,  devbase, ARMS, ARMS2.0, Academic, Resource, Management, System, arms2, xrecon, @ChrgChirag, chiruchirag2001, chiragchrg.netlify.app, devbase.netlify.app,
-		Fullstack Web Developer, My Personal Portfolio, ChiragChrg.github.io, I create Exciting Stuff on the Internet."
+            content="Phan Canh Tuan Dat, Tuan Dat, Ttuandatt, Java Developer, Spring Boot, AWS Cloud, Backend, Microservices, Portfolio Projects"
         />
-        <meta name="author" content="ChiragChrg" />
+        <meta name="author" content="Phan Canh Tuan Dat" />
         <link rel="manifest" href="/manifest.json" />
 
         <!-- Preload CSS Styles -->
@@ -35,22 +30,18 @@ import { Footer } from "../components";
         <SEO
             title={title}
             description={description}
-            canonical=`https://chiragchrg.netlify.app/projects/${title.replace(" | ChiragChrg","").replaceAll(" ","-").toLowerCase()}`
             openGraph={{
                 basic: {
                     title: `${title}`,
                     type: "website",
-                    image: "https://raw.githubusercontent.com/ChiragChrg/ChiragChrg.github.io/main/Avatar.webp",
-                    url: "https://chiragchrg.netlify.app/",
+                    image: "/favicon.png",
+                    url: "/",
                 },
             }}
             twitter={{
                 title: `${title}`,
                 description: `${description}`,
                 card: "summary",
-                site: "@ChrgChirag",
-                creator: "@ChrgChirag",
-                image: "https://raw.githubusercontent.com/ChiragChrg/ChiragChrg.github.io/main/Avatar.webp",
             }}
             extend={{
                 link: [
@@ -64,12 +55,6 @@ import { Footer } from "../components";
                         rel: "apple-touch-icon",
                         type: "image/png",
                         href: "/favicon.png",
-                    },
-                ],
-                meta: [
-                    {
-                        name: "twitter:url",
-                        content: "https://chiragchrg.netlify.app/",
                     },
                 ],
             }}

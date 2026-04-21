@@ -8,5 +8,12 @@ import compress from "astro-compress";
 export default defineConfig({
   // output: "server",
   integrations: [preact(), tailwind(), compress()],
+  i18n: {
+    defaultLocale: "vi",
+    locales: ["vi", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   // adapter: netlify()
 });

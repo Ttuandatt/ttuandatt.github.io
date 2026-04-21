@@ -34,6 +34,21 @@ export { default as CppIcon } from "./cpp.svg"
 export { default as JavaIcon } from "./java.svg"
 export { default as RIcon } from "./Rlogo.svg"
 
+// Backend (Java / Spring / Messaging)
+export { default as SpringIcon } from "./spring.svg"
+export { default as KafkaIcon } from "./kafka.svg"
+export { default as RedisIcon } from "./redis.svg"
+export { default as NestJsIcon } from "./nestjs.svg"
+
+// Database
+export { default as SqlServerIcon } from "./sqlserver.svg"
+export { default as PostgresIcon } from "./postgres.svg"
+
+// Cloud & DevOps
+export { default as AwsIcon } from "./aws.svg"
+export { default as DockerIcon } from "./docker.svg"
+export { default as GithubActionsIcon } from "./github-actions.svg"
+
 // Tools-Stack
 export { default as NpmIcon } from "./npm.svg"
 export { default as GitIcon } from "./git.svg"

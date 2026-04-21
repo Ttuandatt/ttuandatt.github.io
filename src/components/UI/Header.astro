@@ -1,5 +1,16 @@
 ---
 import { Download } from "lucide-preact";
+import { getLangFromUrl, useTranslations, localizePath } from "../../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const otherLang = lang === "vi" ? "en" : "vi";
+const currentPath = Astro.url.pathname;
+const pathWithoutLocale = lang === "vi" ? currentPath : currentPath.replace(/^\/en/, "") || "/";
+const switchHref =
+    otherLang === "vi"
+        ? pathWithoutLocale
+        : `/en${pathWithoutLocale === "/" ? "/" : pathWithoutLocale}`;
 // import ThemeButton from "./ThemeButton.astro";
 ---
 
@@ -7,27 +18,39 @@ import { Download } from "lucide-preact";
     <div
         class="flex justify-between items-center w-full px-6 py-2 bg-headerGradient backdrop-blur-[2px]"
     >
-        <a href="#home" class="Fade_Down font-satisfy font-bold text-[2em]">
+        <a href={localizePath("/#home", lang)} class="Fade_Down font-satisfy font-bold text-[2em]">
             <span class="gradientText w-fit">Portfolio.</span>
         </a>
 
         <nav class="Header_Nav flex gap-6">
-            <a class="Fade_Down" href="#about">ABOUT</a>
-            <a class="Fade_Down" href="#skills">SKILLS</a>
-            <a class="Fade_Down" href="#projects">PROJECTS</a>
-            <a class="Fade_Down" href="#contact">CONTACT</a>
+            <a class="Fade_Down" href={localizePath("/#about", lang)}>{t("nav.about")}</a>
+            <a class="Fade_Down" href={localizePath("/#experience", lang)}>{t("nav.experience")}</a>
+            <a class="Fade_Down" href={localizePath("/#skills", lang)}>{t("nav.skills")}</a>
+            <a class="Fade_Down" href={localizePath("/#projects", lang)}>{t("nav.projects")}</a>
+            <a class="Fade_Down" href={localizePath("/#contact", lang)}>{t("nav.contact")}</a>
         </nav>
 
         <div class="flex_center gap-4">
             <!-- <ThemeButton className="Fade_Down" /> -->
 
             <a
+                class="Fade_Down Lang_Switch text-sm font-semibold tracking-wider"
+                href={switchHref}
+                aria-label={`Switch to ${t("lang.switchTo")}`}
+                title={t("lang.switchTo")}
+            >
+                {otherLang.toUpperCase()}
+            </a>
+
+            <a
                 class="Fade_Down Header_ActionBtn"
-                href="/Chirag Resume.pdf"
+                href="/CV_SoftDev.pdf"
                 target="_blank"
+                rel="noreferrer"
+                download
             >
                 <div class="flex_center gap-2">
-                    <p>Resume</p>
+                    <p>{t("nav.resume")}</p>
                     <Download size={18} />
                 </div>
             </a>
@@ -40,6 +63,7 @@ import { Download } from "lucide-preact";
     const sectionsList = {
         "#home": document.getElementById("home"),
         "#about": document.getElementById("about"),
+        "#experience": document.getElementById("experience"),
         "#skills": document.getElementById("skills"),
         "#projects": document.getElementById("projects"),
         "#contact": document.getElementById("contact"),
@@ -52,7 +76,7 @@ import { Download } from "lucide-preact";
 
             const rect = section.getBoundingClientRect();
             const link = document.querySelector(
-                `#header a[href="${linkHref}"]`,
+                `#header a[href$="${linkHref}"]`,
             );
 
             if (

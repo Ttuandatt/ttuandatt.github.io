@@ -11,16 +11,15 @@ export function getStaticPaths() {
 const { projectID } = Astro.params;
 
 import { Image } from "astro:assets";
-import { ProjectLayout } from "../../layouts";
+import { ProjectLayout } from "../../../layouts";
 import { CheckIcon, ClipboardCopyIcon, ExternalLinkIcon } from "lucide-preact";
-import { CenterTitle, SectionTitle } from "../../components/UI";
-import { getLangFromUrl, useTranslations, pickLocale } from "../../i18n";
+import { CenterTitle, SectionTitle } from "../../../components/UI";
+import { getLangFromUrl, useTranslations, pickLocale } from "../../../i18n";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Lazy loading ProjectInfo
-const ProjectInfo = import("../../utils/ProjectsList");
+const ProjectInfo = import("../../../utils/ProjectsList");
 const { ProjectsList } = await ProjectInfo;
 const [project] = ProjectsList.filter(
     (itm) => itm.Name.replaceAll(" ", "-").toLowerCase() === projectID,
@@ -229,14 +228,14 @@ const [project] = ProjectsList.filter(
 
         setTimeout(() => {
             emailCopyIcons[0].classList.replace("invisible", "visible");
-            emailCopyIcons[1].classList.replace("visible", "invisible");
+            emailCopyIcons[1].classList.replace("invisible", "visible");
         }, 2000);
     });
 
     passCopyBtn?.addEventListener("click", () => {
         navigator.clipboard.writeText(passContent?.textContent);
 
-        passCopyIcons[0].classList.replace("visible", "invisible");
+        passCopyIcons[0].classList.replace("invisible", "visible");
         passCopyIcons[1].classList.replace("invisible", "visible");
 
         setTimeout(() => {
