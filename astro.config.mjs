@@ -7,6 +7,7 @@ import compress from "astro-compress";
 // https://astro.build/config
 export default defineConfig({
   // output: "server",
+  site: "https://ttuandatt.github.io",
   integrations: [preact(), tailwind(), compress()],
   i18n: {
     defaultLocale: "vi",
